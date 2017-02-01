@@ -1,0 +1,25 @@
+{
+  "name": "stick-stack",
+  "version": "0.0.1",
+  "description": "A jquery plugin that helps stick elements consecutively",
+  "main": "src/stick-stack.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swiftmade/stick-stack.git"
+  },
+  "keywords": [
+    "jquery",
+    "sticky",
+    "stick",
+    "fixed"
+  ],
+  "author": "Ahmet Ozisik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swiftmade/stick-stack/issues"
+  },
+  "homepage": "https://github.com/swiftmade/stick-stack#readme"
+}
