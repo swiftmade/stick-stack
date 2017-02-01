@@ -14,6 +14,7 @@
 
             var $el = $(this);
             var cachedCss = null;
+            var $placeholder = null;
             var $parent = options.containerSelector == null ? $el.parent() : $el.closest(options.containerSelector);
 
             var applyStickStack = function () {
@@ -24,13 +25,16 @@
 
                 if (scrollTop < scrollMin || scrollTop > scrollMax) {
                     $el.attr('style', '');
-                    $el.siblings('.stickplaceholder').hide();
+                    if($placeholder) {
+                        $placeholder.hide();    
+                    }
                     return;
                 }
 
                 if (cachedCss !== null) {
                     $el.attr('style', cachedCss);
-                    $el.siblings('.stickplaceholder').show();
+                    $placeholder.css('height', $el.innerHeight());
+                    $placeholder.show();
                     return;
                 }
 
@@ -47,10 +51,11 @@
                 cachedCss = $el.attr('style');
                 //We'll clone the current element and add it to its parent to occupy the same size
                 //So making stick element fixed will not change the window scroll
-                var $placeholder = $('<div class="stickplaceholder clearfix"></div>')
+                var $placeholderDiv = $('<div class="stickplaceholder clearfix"></div>')
                     .css('height', $el.innerHeight() + 'px');
 
-                $parent.prepend($placeholder);
+                $parent.prepend($placeholderDiv);
+                $placeholder = $('.stickplaceholder', $parent);
             };
 
             $window.scroll(applyStickStack);
