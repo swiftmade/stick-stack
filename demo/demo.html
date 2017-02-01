@@ -9,7 +9,10 @@
     <script src="../src/stick-stack.js"></script>
     <script>
     $(document).ready(function() {
-        $(window).stickStack('.panel-heading');
+        $(window).stickStack({
+            el: '.panel-heading',
+            containerSelector: '.panel'
+        });
     })
     </script>
 </head>

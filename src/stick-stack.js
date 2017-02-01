@@ -1,27 +1,28 @@
-(function() {
-    $.fn.stickStack = function(args) {
+(function () {
+    $.fn.stickStack = function (args) {
+        var $window = $(window);
         var defaultOptions = {
             top: 0,
             margin: 0,
             zIndex: 10,
-            $container: $(this)
+            containerSelector: null
         };
-        var override = (typeof args === 'object') ? args : { el: args };
+        var override = (typeof args === 'object') ? args : {el: args};
         var options = $.extend({}, defaultOptions, override);
 
-        $(options.el).each(function() {
+        $(options.el).each(function () {
 
             var $el = $(this);
             var cachedCss = null;
-            var $parent = $el.parent();
+            var $parent = options.containerSelector == null ? $el.parent() : $el.closest(options.containerSelector);
 
-            var applyStickStack = function() {
+            var applyStickStack = function () {
                 var parentOffset = $parent.offset();
-                var containerTop = options.$container.scrollTop();
+                var scrollTop = $window.scrollTop();
                 var scrollMin = parentOffset.top - options.top;
                 var scrollMax = scrollMin + $parent.outerHeight() - $el.outerHeight();
 
-                if (containerTop < scrollMin || containerTop > scrollMax) {
+                if (scrollTop < scrollMin || scrollTop > scrollMax) {
                     $el.attr('style', '');
                     $el.siblings('.stickplaceholder').hide();
                     return;
@@ -52,7 +53,7 @@
                 $parent.prepend($placeholder);
             };
 
-            $(window).scroll(applyStickStack);
+            $window.scroll(applyStickStack);
             applyStickStack();
         });
     };
