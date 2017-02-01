@@ -19,8 +19,9 @@
                 var parentOffset = $parent.offset();
                 var containerTop = options.$container.scrollTop();
                 var scrollMin = parentOffset.top - options.top;
+                var scrollMax = scrollMin + $parent.outerHeight() - $el.outerHeight();
 
-                if (containerTop < scrollMin) {
+                if (containerTop < scrollMin || containerTop > scrollMax) {
                     $el.attr('style', '');
                     $el.siblings('.stickplaceholder').hide();
                     return;
