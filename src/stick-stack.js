@@ -15,8 +15,7 @@
             var cachedCss = null;
             var $parent = $el.parent();
 
-            $(window).scroll(function() {
-
+            var applyStickStack = function() {
                 var parentOffset = $parent.offset();
                 var containerTop = options.$container.scrollTop();
                 var scrollMin = parentOffset.top - options.top;
@@ -34,7 +33,6 @@
                 }
 
                 var horizontalMargin = parseInt($el.css('margin-left')) + parseInt($el.css('margin-right'));
-
                 var css = {
                     'top': options.top,
                     'position': 'fixed',
@@ -51,7 +49,10 @@
                     .css('height', $el.innerHeight() + 'px');
 
                 $parent.prepend($placeholder);
-            });
+            };
+
+            $(window).scroll(applyStickStack);
+            applyStickStack();
         });
     };
 })();
