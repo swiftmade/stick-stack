@@ -27,4 +27,7 @@ Instead of a selector, you can pass an options object. Every possible options is
 		margin: 0,
 		zIndex: 10,
 		el: '.selector',
+		containerSelector: null
 	});
+
+If containerSelector is null, measurements will be done based on stackable div's immediate parent. If you pass in a selector, stick stack will find the closest match and use its height in calculating whether or not to hide the current sticky div. 
