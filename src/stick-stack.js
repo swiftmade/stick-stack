@@ -59,6 +59,16 @@
             };
 
             $window.scroll(applyStickStack);
+            $window.resize(function() {
+                $el.attr('style', '');
+                if($placeholder) {
+                    $placeholder.remove();
+                }
+                cachedCss = null;
+                $placeholder = null;
+                applyStickStack();
+            });
+            
             applyStickStack();
         });
     };
