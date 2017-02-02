@@ -4,7 +4,7 @@
 This is a slightly modified version of a jQuery plugin originally implemented by [@ilterocal](https://github.com/ilterocal).
 
 # What does this plugin do?
-It helps you stick a stack of elements (table headers, bootstrap panel headings, etc.) consecutively. **In only 57 lines.** As soon as the next sticky element arrives, the previous sticky element is released. Here is a demo:
+It helps you stick a stack of elements (table headers, bootstrap panel headings, etc.) consecutively. **In only 75 lines.** As soon as the next sticky element arrives, the previous sticky element is released. Here is a demo:
 
 ![Demo](https://media.giphy.com/media/26xBMFekYTMCRAxHy/giphy.gif)
 
@@ -15,12 +15,11 @@ Just include src/stick-stack.js in your code and specify which elements you want
 
 	$(window).stickStack('.panel-heading');
 
-Insert any class or selector instead of panel-haeding. Voila!
-
+Insert appropriate selector as the parameter.
 
 # Customize
 
-Instead of a selector, you can pass an options object. Every possible options is listed below, only the **el** key is compulsory in this mode, which should be your selector string.
+Instead of a selector, you can also pass an options object. Every possible option is listed below. The **el** key is compulsory in this mode, which should be the selector for stickable elements.
 
 	$(window).stickStack({
 		top: 0,
