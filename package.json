@@ -1,6 +1,6 @@
 {
   "name": "stick-stack",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "A jquery plugin that helps stick elements consecutively",
   "main": "src/stick-stack.js",
   "scripts": {
